@@ -1,0 +1,20 @@
+resource :- https://docs.gunicorn.org/en/stable/settings.html#timeout , https://community.render.com/t/worker-timeout-error-how-can-i-fix-it/13671/3
+https://community.render.com/t/worker-timeout-error-how-can-i-fix-it/13671/3
+
+
+cmd for the fast api 
+
+
+cmd for django/flask
+gunicorn --bind 0.0.0.0:8443 wsgi:app --worker-class gevent
+
+cmd for authbind ( https) without setting up the domain ( fast api )
+
+authbind gunicorn -b 0.0.0.0:80 main:app --access-logfile log/access.log --error-logfile log/general.log  -k uvicorn.workers.UvicornWorker 
+
+
+
+
+cmd for false https certicate( jugaad) only for testing and educational purposes 
+
+nohup python ./manage.py runsslserver 0.0.0.0:8888 
